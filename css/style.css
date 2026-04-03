@@ -1,1 +1,499 @@
-
+/* ホーム画面 */
+p {
+  width: 150px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+body{
+  font-family: 'Poppins', sans-serif;
+}
+.search-bar{
+  width:50vw !important;
+  margin-left:5vw;
+  margin-top:3vh;
+}
+.title{
+  text-align:center;
+  color:#f6b9b9;
+  font-size:32px;
+  font-weight:600;
+  margin-bottom:25px;
+}
+/* 共通ボタン */
+.quarter-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:black;
+  font-size:12px;
+  width:150px;
+  height:150px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition:0.2s;
+  margin:0 auto;
+  border-radius: 10px;
+}
+/* ホバーで影 */
+.quarter-btn:hover{
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+/* 押したとき */
+.quarter-btn:active{
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  transform:translateY(4px);
+}
+/* 左上 */
+.tl{
+  background:#b7dad6;
+  border-top-left-radius:120px;
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+/* 右上 */
+.tr{
+  background:#f6b9b9;
+  border-top-right-radius:120px;
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+/* 左下 */
+.bl{
+  background:#b7dad6;
+  border-bottom-left-radius:120px;
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+/* 右下 */
+.br{
+  background:#ffffff;
+  border-bottom-right-radius:120px;
+  outline:3px dashed #f6b9b9;
+  outline-offset:-8px;
+}
+/* 背景パネル（角丸四角形） */
+.schedule-bg{
+  position: relative;
+  width: 100%;
+  background: #b7dad6;
+  border-radius: 60px 60px 0 0; /* 上部角を丸める */
+  margin-top: 20px;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+/* ステッチ風 ::before */
+.schedule-bg::before{
+  content:"";
+  position:absolute;
+  top:8px;       /* 上端から少し内側 */
+  left:8px;
+  right:8px;
+  height: calc(100% - 8px); /* 下側まで伸ばすけど下は消す */
+  border-top:3px dashed #fcf8ea;    /* 上だけステッチ */
+  border-left:3px dashed #fcf8ea;   /* 左側ステッチ */
+  border-right:3px dashed #fcf8ea;  /* 右側ステッチ */
+  border-bottom:none;               /* 下はステッチ無し */
+  border-radius: 60px 60px 0 0;     /* 上の角に丸みを合わせる */
+  pointer-events:none;               /* スクロールを邪魔しない */
+  box-sizing:border-box;
+}
+/* スケジュールリスト */
+.schedule-sheet{
+  position: relative; /* 背景パネルの上に配置 */
+  padding: 15px 20px;
+}
+/* タイトル */
+.schedule-title{
+  text-align: center;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+/* リストスタイル */
+.schedule-sheet ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.schedule-sheet li{
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+}
+/* page1.html側 */
+/* 勾玉ボタンのベース */
+.magatama-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:black;
+  position:relative;
+  border-radius: 60% 40% 50% 50% / 60% 50% 50% 40%;
+}
+/* 横並び */
+.magatama-container{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start; /* 上揃えにするのがポイント */
+  gap:1px;
+}
+/* ボタンの文字共通 */
+.magatama-btn .text{
+  display:inline-block;
+}
+/* 勾玉ボタン（デザイン系） */
+.type1{
+  width:210px;
+  height:270px;
+  background:#f6b9b9;
+  transform: rotate(180deg);
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+/* type1の逆回転 */
+.type1 .text{
+  transform: rotate(-180deg);
+}
+.top-btn{
+  margin-top:100px;
+}
+/* 勾玉ボタン（建築系） */
+.type2{
+  width:150px;
+  height:190px;
+  background:#b7dad6;
+  transform: rotate(-160deg) scaleX(-1);
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+/* type2の逆回転（回転 + 反転を打ち消す） */
+.type2 .text{
+  transform: rotate(-160deg) scaleX(-1);
+}
+.middle-btn{
+  margin-top:300px; /* 高さ調整 */
+}
+/* 共通 */
+.circle-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  color:black;
+  font-weight:bold;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+/* その他ボタン */
+.big-btn{
+  width:100px;
+  height:100px;
+  background:#ffffff;
+  font-size:15px;
+  outline:3px dashed #f0f0f0;
+  outline-offset:-8px;
+  margin-top:-40px;
+  margin-left:60px;
+}
+/* ホームボタン（下中央固定） */
+.home-btn{
+  position:fixed;
+  bottom:15px;          /* 下からの距離 */
+  left:50%;
+  transform:translateX(-50%); /* 中央寄せ */
+  width:80px;
+  height:80px;
+  background:#f6b9b9;
+}
+/* page3のカレンダー一覧 */
+.calendar-wrapper {
+  position: relative;
+  background: #b7dad6;
+  width: 320px;
+  height: 600px;
+  border-radius: 12px;
+  margin: 40px auto;
+}
+.calendar-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 92%;
+  height: 92%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 8px;
+  z-index: 2;
+}
+.calendar {
+  position: absolute;
+  width: 88%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.weekdays, .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.weekdays div {
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+}
+.days {
+  flex-grow: 1;
+}
+.days div {
+  height: 80px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  display: flex;          
+  flex-direction: column;
+}
+.days div > div:first-child {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+.today {
+  background-color: #ffeeba;
+}
+.event {
+  font-size: 5px;
+  white-space: nowrap;
+}
+.exam {
+  color: red;
+}
+.apply {
+  color: blue;
+}
+/* page5のカード一覧 */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.card:nth-child(odd) {
+  background-color: #f29fa0;
+}
+.card:nth-child(even) {
+  background-color: #f6b9b9;
+}
+/* カードデザイン */
+.card {
+  display: block;
+  padding: 30px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  text-decoration: none;
+  color: black;
+  border-radius: 20px;
+  transition: 0.2s;
+  position: relative;
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+/* ホバーで影 */
+.card:hover{
+  box-shadow:0 8px 10px rgba(0,0,0,0.25);
+}
+/* 押したとき */
+.card:active{
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  transform:translateY(4px);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #fcf8ea;
+  border-radius: 50%;
+}
+.divider {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 15px;
+  background: #b7dad6;
+  border-radius: 10px;
+}
+/* 並び替え機能 */
+.controls {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+/* セレクトボックス */
+.controls select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px #ffffff;
+  transition: 0.2s;
+}
+/* ホバー */
+.controls select:hover {
+  border-color: #ccc;
+}
+/* フォーカス（クリック時） */
+.controls select:focus {
+  outline: none;
+  border-color: #ccc;
+  box-shadow: 0 0 5px #ccc;
+}
+/* 3次元CAD利用技術者検定 2級の詳細 */
+.page {
+  background: #fcf8ea;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* メモ帳ラッパー（影を含める） */
+.memo-wrapper {
+  position: relative;
+  top: -50px;
+  left: 10px;
+}
+/* メモ帳の影 */
+.memo-shadow {
+  position: absolute;
+  top: 24px;
+  left: 8px;
+  width: 80vw;
+  height: 65vh;
+  background: rgba(0,0,0,0.15);
+  border-radius: 12px;
+  filter: blur(8px);
+  z-index: 0;
+}
+/* メモ帳 */
+.memo {
+  position: relative;
+  width: 80vw;
+  height: 65vh;
+  background: white;
+  border-radius: 12px;
+  padding: 80px 20px 20px; 
+  box-sizing: border-box;
+}
+/* リング全体 */
+.rings {
+  position: absolute;
+  top: -35px;
+  left: 10px;
+  display: flex;
+}
+/* 半円リング（ここが重要） */
+.rings span {
+  width: 46px;
+  height: 34px;
+  border: 4px solid #f29fa0;  /* ← 円を作る */
+  border-bottom: none;        /* ← 下を消す */
+  border-radius: 46px 46px 0 0; /* ← 半円 */
+  position: relative;
+  margin-left: -10px;
+}
+.rings span:first-child {
+  margin-left: 0;
+}
+/* 単位付箋 */
+.unit-tag {
+  position: absolute;
+  top: 30px;
+  right: -40px;
+  background: #b7dad6;
+  padding: 10px 30px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.big-grade {
+  font-size: 16px;
+}
+/* メモ帳の付箋（下）*/
+.tabs {
+  position: absolute;
+  right: -45px;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tabs span {
+  width: 45px;
+  height: 20px;
+  background: #b7dad6;
+  border-radius: 4px;
+}
+.subtitle {
+  position: absolute;
+  top: 35px;
+  left: 20px; 
+  margin: 0;
+  font-size: 15px;
+  border-bottom: 4px dashed #f6b9b9;
+  padding-bottom: 6px;
+}
+.small-grade {
+  font-size: 0.7em;
+}
+/* リスト全体を中央寄せ */
+.detail-list {
+  margin: 30px auto;
+  max-width: 500px;
+}
+/* 行 */
+.row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+/* ラベル（左） */
+.label {
+  width: 70px;
+  min-width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6b9b9;
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 300;
+}
+/* 右：内容（広げる） */
+.value {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  margin-left: 10px;
+  font-size: 12px;
+}
