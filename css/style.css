@@ -239,12 +239,16 @@ body{
   position: relative;
   background: #b7dad6;
   width: 320px;
-  height: 600px;
+  height: 500px;
   border-radius: 12px;
   margin: 40px auto;
 }
-.calendar-wrapper::after {
-  content: "";
+.calendar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.calendar-white {
   position: absolute;
   width: 92%;
   height: 92%;
@@ -253,40 +257,45 @@ body{
   transform: translate(-50%, -50%);
   background: #ffffff;
   border-radius: 8px;
-  z-index: 2;
+  z-index: 1;
 }
-.calendar {
-  position: absolute;
-  width: 88%;
+.calendar-content {
+  position: relative;
+  z-index: 2;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 0 0 40px; /* 高さ固定 */
 }
-.weekdays, .days {
+.weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-}
-.weekdays div {
-  text-align: center;
-  font-weight: bold;
-  padding: 5px;
+  flex: 0 0 25px; /* 高さ固定 */
+  margin-bottom: 2px;
 }
 .days {
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex: 1; /* 残り高さを全部使う */
+  gap: 2px;
+  overflow-y: auto;
 }
 .days div {
-  height: 80px;
-  border: 1px solid #ddd;
-  padding: 5px;
-  display: flex;          
+  display: flex;
   flex-direction: column;
+  border: none;
+  border-radius: 4px;
+  padding: 2px;
+  cursor: pointer;
+}
+.days div div {
+  border: none;
 }
 .days div > div:first-child {
   font-weight: bold;
@@ -300,10 +309,10 @@ body{
   white-space: nowrap;
 }
 .exam {
-  color: red;
+  color: #f6b9b9;
 }
 .apply {
-  color: blue;
+  color: #b7dad6;
 }
 /* page5のカード一覧 */
 body {
