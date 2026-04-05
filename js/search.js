@@ -118,7 +118,7 @@ function renderCalendar(date) {
 
     if (events[key]) {
       events[key].forEach(e => {
-        html += `<div class="event ${e.type}">● ${shorten(e.title)}</div>`; // ← 文字制限
+        html += `<div class="event ${e.type}"> ${shorten(e.title)}</div>`; // ← 文字制限
       });
     }
 
