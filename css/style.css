@@ -234,6 +234,31 @@ body{
   height:80px;
   background:#f6b9b9;
 }
+/* page2の単位数並び替え一覧 */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+.controls button {
+  flex: 1;
+  max-width: 180px;
+  padding: 15px 0;
+  font-size: 16px;
+  background-color: #f6b9b9;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  outline:3px dashed #fcf8ea;
+  outline-offset:-8px;
+}
+.controls button:hover{
+  box-shadow:0 8px 10px rgba(0,0,0,0.25);
+}
 /* page3のカレンダー一覧 */
 .calendar-wrapper {
   position: relative;
