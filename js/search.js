@@ -43,6 +43,24 @@ function sortCards(type) {
 
   cards.forEach(card => container.appendChild(card));
 }
+// 並び替え機能（単位数のみ）
+function sortByUnit(order) {
+  const container = document.getElementById("cardContainer");
+  const cards = Array.from(container.querySelectorAll(".card"));
+
+  cards.sort(function(a, b) {
+    const unitA = parseInt(a.dataset.unit);
+    const unitB = parseInt(b.dataset.unit);
+
+    if (order === "desc") {
+      return unitB - unitA; // 多い順
+    } else {
+      return unitA - unitB; // 少ない順
+    }
+  });
+  // 並び替えたカードを再配置
+  cards.forEach(card => container.appendChild(card));
+}
 // カレンダー関連
 const title = document.getElementById("title");
 const body = document.getElementById("calendar-body");
